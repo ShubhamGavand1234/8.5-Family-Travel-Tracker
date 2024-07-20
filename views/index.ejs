@@ -930,8 +930,19 @@
     <script>
       const country_codes = "<%= countries %>".split(",");
       console.log(typeof "<%= countries %>");
+
+      // country_codes.forEach((code) => {
+      //   document.getElementById(code).style.fill = "<%= color %>";
+      //   console.log(code, component);
+      // });
       country_codes.forEach((code) => {
-        document.getElementById(code).style.fill = "<%= color %>";
+        const element = document.getElementById(code);
+        if (element) {
+          element.style.fill = "<%= color %>";
+          console.log(code, element);
+        } else {
+          console.error(`Element with id ${code} not found`);
+        }
       });
     </script>
   </body>
